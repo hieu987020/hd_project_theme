@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'remember_theme.dart';
+import 'home.dart';
 import 'theme.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: _buildTheme(),
       debugShowCheckedModeBanner: false,
-      home: Remember(),
+      home: Home(),
     );
   }
 }
@@ -26,35 +26,31 @@ ThemeData _buildTheme() {
     colorScheme: base.colorScheme.copyWith(
       primary: kPrimary,
       secondary: kSecondary,
+      background: kBackground,
       surface: kSurface,
       error: kError,
       onPrimary: onPrimary,
       onSecondary: onSecondary,
       onBackground: onBackground,
+      onSurface: onSurface,
     ),
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: kBackground,
     textTheme: _buildTextTheme(base.textTheme),
     textSelectionTheme: const TextSelectionThemeData(
       selectionColor: Colors.blue,
     ),
-    // ignore: prefer_const_constructors
-    inputDecorationTheme: InputDecorationTheme(
-      // focusedBorder: OutlineInputBorder(
-      //   borderSide: BorderSide(
-      //     width: 2.0,
-      //     color: Colors.lightBlue,
-      //   ),
-      // ),
-      // ignore: prefer_const_constructors
-      border: const OutlineInputBorder(
-        borderSide: BorderSide(
-          width: 2.0,
-          // màu này không ảnh hưởng?
-          color: Colors.red,
-        ),
-      ),
-      // filled: true,
-      // fillColor: Colors.red.withOpacity(0.2),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: InputBorder.none,
+      filled: true,
+      fillColor: kSurface,
+    ),
+    buttonTheme: ButtonThemeData(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
+      buttonColor: kPrimary,
+    ),
+    iconTheme: const IconThemeData(
+      color: kPrimary,
+      // size: 60,
     ),
   );
 }
